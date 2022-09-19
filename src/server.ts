@@ -14,7 +14,6 @@ app.register(cors);
 type CompaniesRequest = FastifyRequest<{ Querystring: { query: string, specialities: string } }>
 app.get('/companies', (request: CompaniesRequest) => {
     const { query = '', specialities } = request.query;
-    console.log('query:', query);
     return companyRepository.findByNameAndSpecialities(query, specialities?.split(','));
 });
 
